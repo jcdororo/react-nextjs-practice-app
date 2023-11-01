@@ -1,6 +1,9 @@
 'use client'
 
-export default function Error({error, reset}){
+
+
+export default function Error({error, reset}:any){
+
   return (
     <div>
       <h4>오 이런 에러남</h4>

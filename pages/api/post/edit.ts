@@ -1,7 +1,8 @@
-import { connectDB } from "@/util/database";
 import { ObjectId } from "mongodb";
+import { NextApiRequest, NextApiResponse } from "next";
+import { connectDB } from "util/database";
 
-export default async function handler(요청, 응답) {
+export default async function handler(요청:NextApiRequest, 응답:NextApiResponse) {
   if (요청.method == 'POST') {
     let temp = { title : 요청.body.title, content : 요청.body.content }
     const db = (await connectDB).db("forum");

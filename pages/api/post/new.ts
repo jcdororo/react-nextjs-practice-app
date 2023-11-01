@@ -1,9 +1,10 @@
-import { connectDB } from "@/util/database";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]";
+import { connectDB } from "util/database";
+import { NextRequest, NextResponse } from "next/server";
 
 
-export default async function handler(요청, 응답){
+export default async function handler(요청:NextRequest, 응답:NextResponse){
   let session = await getServerSession(요청, 응답, authOptions);
 
   if(session){

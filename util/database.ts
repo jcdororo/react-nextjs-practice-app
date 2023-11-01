@@ -1,7 +1,10 @@
 import { MongoClient } from 'mongodb'
 const url = 'mongodb+srv://admin:qwer1234@cluster0.4eybyvy.mongodb.net/?retryWrites=true&w=majority'
-const options = { useNewUrlParser: true }
-let connectDB
+const options: any = { useNewUrlParser: true }
+
+
+
+let connectDB: any
 
 if (process.env.NODE_ENV === 'development') {
   if (!global._mongo) {

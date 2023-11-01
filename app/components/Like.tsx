@@ -1,8 +1,15 @@
 'use client'
 
+import { ObjectId } from "mongodb"
 import { useEffect, useState } from "react"
 
-export default function Like({_id, post_id}) {
+
+interface propsLike {
+  _id: ObjectId,
+  post_id: string
+}
+
+export default function Like({_id, post_id}:propsLike) {
 
   const [like, setLike] = useState(0)
 
