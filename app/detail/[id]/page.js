@@ -1,20 +1,15 @@
-import { connectDB } from "../../../util/database";
+import { connectDB } from "@/util/database";
 import { ObjectId } from "mongodb";
-import Like from "../../components/Like";
+import Comment from "./Comment";
+import Like from "./Like";
 import { getServerSession } from "next-auth";
-import Comment from "app/components/Comment";
-import { authOptions } from "pages/api/auth/[...nextauth]";
-import { notFound } from "next/navigation";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
+
+
+export default async function Detail(props) {
 
 
 
-
-interface propsDetail {
-  params: { id: string },
-  searchParams: {} 
-}
-
-export default async function Detail(props:propsDetail) {
   // const client = await connectDB;
   const db = (await connectDB).db("forum");
   let result = await db.collection('post')
@@ -23,7 +18,7 @@ export default async function Detail(props:propsDetail) {
                         })
 
   if (result == null) {
-    return notFound();
+    return notFound()
   }
 
   // let commentResult = await db.collection('comment')
@@ -35,7 +30,7 @@ export default async function Detail(props:propsDetail) {
   //                      console.log('commentResult',commentResult)
   
   
-  let session:any = await getServerSession(authOptions);
+  let session = await getServerSession(authOptions);
 
   if(!session) {
     return (
@@ -48,7 +43,7 @@ export default async function Detail(props:propsDetail) {
                       .findOne({email : session.user.email})
 
 
-
+  console.log('sessionqqqqqqqqqqqqqqqqqqqks',session)
   return (
     <div>
       <h4>상세페이지</h4>

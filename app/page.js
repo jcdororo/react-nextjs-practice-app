@@ -1,4 +1,4 @@
-import { connectDB } from "util/database";
+import { connectDB } from "@/util/database";
 
 // 60초동안 페이지가 캐싱된다.
 // 60초 지나면 다시 캐싱함.

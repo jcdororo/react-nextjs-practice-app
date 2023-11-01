@@ -1,10 +1,8 @@
+import { connectDB } from "@/util/database";
 import { ObjectId } from "mongodb";
-import { NextRequest, NextResponse } from "next/server";
-import { connectDB } from "util/database";
 
 
-export default async function handler(요청:NextRequest, 응답:NextResponse){
-
+export default async function handler(요청, 응답){
   
   if(요청.method == 'POST') {
     요청.body = JSON.parse(요청.body);

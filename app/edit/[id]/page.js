@@ -1,14 +1,7 @@
-// import { connectDB } from "@/util/database";
+import { connectDB } from "@/util/database";
 import { ObjectId } from "mongodb";
-import { connectDB } from "util/database";
 
-
-interface propsEdit {
-  params: { id: string },
-  searchParams: {} 
-}
-
-export default async function Edit(props:propsEdit) {
+export default async function Edit(props) {
 
   
   const db = (await connectDB).db("forum");

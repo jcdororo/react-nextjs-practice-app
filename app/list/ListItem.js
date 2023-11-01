@@ -1,19 +1,9 @@
 'use client'
 
-import { ObjectId } from "mongodb"
 import Link from "next/link"
 
-interface propsListitem {
-  result: [
-    {
-      _id: ObjectId,
-      title: string,
-      content: string
-    }
-  ]
-}
 
-export default function ListItem({result}:propsListitem) {
+export default function ListItem({result}) {
 
   return(
     <div>
@@ -24,7 +14,7 @@ export default function ListItem({result}:propsListitem) {
             <h4>{result[i].title}</h4>
           </Link>
           <Link href={'/edit/' + result[i]._id}>✏️</Link>
-          <span className="delete" onClick={(e:any)=>{
+          <span className="delete" onClick={(e)=>{
                                     fetch('/api/post/delete', { method: 'DELETE', body : result[i]._id })
                                     .then((r)=>{
                                       if(r.status == 200) {

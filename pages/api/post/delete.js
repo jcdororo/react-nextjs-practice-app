@@ -1,16 +1,16 @@
+import { connectDB } from "@/util/database";
 import { ObjectId } from "mongodb";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]";
-import { connectDB } from "util/database";
-import { NextApiRequest } from "next";
-import { NextResponse } from "next/server";
 
-export default async function handler(요청:NextApiRequest, 응답:NextResponse) {
+export default async function handler(요청, 응답) {
 
 
   if(요청.method == 'DELETE'){
-    let session:any = await getServerSession(요청, 응답, authOptions);
+    let session = await getServerSession(요청, 응답, authOptions);
 
+    // console.log(session.user.role == 'admin')
+    // console.log(요청.body)
     const db = (await connectDB).db("forum");
     let result = await db.collection('post').findOne({_id : new ObjectId(요청.body)});
     if(session.user.email == result.author || session.user.role == 'admin') {
