@@ -1,7 +1,13 @@
-import { connectDB } from "@/util/database";
 import bcrypt from 'bcrypt'
+import { NextApiRequest, NextApiResponse } from 'next';
+import { RequestHandler } from 'next/dist/server/next';
+import { connectDB } from 'util/database';
 
-export default async function handler(요청, 응답) {
+
+
+export default async function handler(요청:NextApiRequest, 응답:NextApiResponse) {
+
+
   if (요청.method == 'POST') {
     if(요청.body.name == '' || 요청.body.email == '' || 요청.body.password == ''){
       return 응답.status(500).json('빈칸이 있는지 확인하세요')

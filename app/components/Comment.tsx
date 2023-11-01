@@ -1,8 +1,23 @@
 'use client'
 
+import { ObjectId } from "mongodb"
 import { useEffect, useState } from "react"
 
-export default function Comment({id}) {
+interface propsId {
+  id: string
+}
+
+interface commentList {
+  x: {
+    _id: ObjectId,
+    content: string,
+    author: string,
+    parent: string
+  },
+  i: number
+}
+
+export default function Comment({id}:propsId) {
   const [comment, setComment] = useState('')
   const [commentList, setCommentList] = useState([])
   
@@ -28,7 +43,7 @@ export default function Comment({id}) {
       <hr></hr>
       {
         commentList.length > 0 ?
-        commentList.map((x, i) => (
+        commentList.map((x:commentList["x"], i:commentList["i"]) => (
           <div key={i}>{x.author} : {x.content}</div>
         ))
         : '댓글 없음'

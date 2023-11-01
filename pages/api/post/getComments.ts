@@ -1,6 +1,8 @@
-import { connectDB } from "@/util/database";
+import { NextApiResponse } from "next";
+import { NextRequest } from "next/server";
+import { connectDB } from "util/database";
 
-export default async function handler (요청, 응답) {
+export default async function handler (요청:NextRequest, 응답:NextApiResponse) {
 
   // console.log(요청.body)
 
