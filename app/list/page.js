@@ -1,5 +1,5 @@
 import { connectDB } from "@/util/database";
-import ListItem from "./ListItem";
+import ListItem from "../../components/ListItem";
 
 //force-static
 //다이나믹페이지로 만들어준다.
