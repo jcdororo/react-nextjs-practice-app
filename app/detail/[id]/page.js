@@ -1,6 +1,6 @@
 import { connectDB } from "@/util/database";
 import { ObjectId } from "mongodb";
-import Comment from "../../../components/Comment";
+import Comment from "./Comment";
 import Like from "./Like";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
