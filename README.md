@@ -3,7 +3,7 @@
 기술 | Stacks | 달성률
 --|:--:|--:
 **<a href="#Language">Language</a>** | Typescript | 40%
-**<a href="#DB">DB</a>** | mongodb on docker | 100%
+**<a href="#DB">DB</a>** | Mongodb on Docker | 100%
 **<a href="#클라이언트">클라이언트</a>** | ReactJS | 0%
 **<a href="#서버">서버</a>** | NextJS | 0%
 **<a href="#상태관리">상태관리</a>** | Recoil | 0%
@@ -20,11 +20,66 @@
 ->
 ```
 
-## <div id="DB">Mongo DB를 사용한 이유</div>
+## <div id="DB">Mongodb on Docker를 사용한 이유</div>
 ```
 -> 
 관계형 데이터베이스 의 유연성
 ```
+# Docker
+
+## 명령어
+### 이미지 pull   
+```
+$ docker pull [이미지 이름]
+```
+
+### 이미지 확인
+```
+$ docker images
+```
+
+### 도커 이미지 시작
+```
+$ docker start [컨테이너 이름 혹은 아이디]
+```
+
+### 도커 이미지 중지
+```
+$ docker stop [컨테이너 이름 혹은 아이디]
+```
+
+### 컨테이너 bash 접속
+```
+$ docker exec -it [컨테이너 이름] bash
+```
+
+### 실행중인 컨테이너 확인
+```
+$ docker ps
+```
+
+### 종료된 컨테이너까지 확인
+```
+$ docker ps -a
+```
+
+### 컨테이너 삭제
+```
+$ docker rm [컨테이너 ID]
+```
+
+### 이미지 삭제
+```
+$ docker rmi [이미지 ID]
+```
+
+### 몽고db 실행 on docker
+```
+docker run -d --name next-mongo -p 27017:27017 -e MONGO_URI=mongodb://localhost:27017 mongo   
+```
+
+"mongodb://localhost:27017"를 사용할 수 있다.
+----
 ## <div id="클라이언트">ReactJS를 사용한 이유</div>
 ```
 -> 
