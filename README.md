@@ -7,8 +7,8 @@
 **<a href="#클라이언트">클라이언트</a>** | ReactJS | 0%
 **<a href="#서버">서버</a>** | NextJS | 0%
 **<a href="#상태관리">상태관리</a>** | Recoil | 0%
-**<a href="#CSS">CSS</a>** | SCSS | 0%
-**<a href="#배포">배포</a>** | ? | 0%
+**<a href="#CSS">CSS</a>** | Tailwind CSS | 0%
+**<a href="#배포">배포</a>** | Vercel | 0%
 
 
 
@@ -88,7 +88,7 @@ docker run -d --name next-mongo -p 27017:27017 -e MONGO_URI=mongodb://localhost:
 ```
 -> 
 ```
-## <div id="상태관리">{상태관리}를 사용한 이유</div>
+## <div id="상태관리">Recoil을 사용한 이유</div>
 ```
 -> 
 [React Context API, Redux(Reducer + flux), Recoil]
@@ -96,11 +96,11 @@ docker run -d --name next-mongo -p 27017:27017 -e MONGO_URI=mongodb://localhost:
 2. 공식문서가 잘되어있어야한다.
 3. 간단해야한다.
 ```
-## <div id="CSS">SCSS를 사용한 이유</div>
+## <div id="CSS">Tailwind CSS를 사용한 이유</div>
 ```
 -> 
 ```
-## <div id="배포">{배포}를 사용한 이유</div>
+## <div id="배포">Vercel을 사용한 이유</div>
 ```
 -> 
 ```

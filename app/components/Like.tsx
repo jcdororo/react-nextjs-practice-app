@@ -19,10 +19,19 @@ export default function Like({_id, post_id}:propsLike) {
     post_id : post_id
   }
 
+  const getTemp = {
+    get : true,
+    user_id : _id,
+    post_id : post_id
+  }
+
+
+
   useEffect(() => {
-    fetch('/api/post/like', {method:'GET'})
+    fetch('/api/post/like', {method:'POST', body : JSON.stringify(getTemp)})
     .then(r => r.json())
     .then(result => setLike(result.length))
+    .then(r => console.log('useEffect'))
   }, [])
   
 
@@ -36,7 +45,9 @@ export default function Like({_id, post_id}:propsLike) {
       <button onClick={() => {
         fetch('/api/post/like', {method:'POST', body: JSON.stringify(temp)})
         .then(r => r.json())
+        // .then(result => console.log('타입',typeof result.length))
         .then(result => setLike(result.length))
+        .then(r => console.log('onClick'))
       }}
       >
         좋아요
