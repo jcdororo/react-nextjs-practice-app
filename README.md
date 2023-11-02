@@ -3,11 +3,11 @@
 기술 | Stacks | 달성률
 --|:--:|--:
 **<a href="#Language">Language</a>** | Typescript | 40%
-**<a href="#DB">DB</a>** | mongodb on docker | 0%
+**<a href="#DB">DB</a>** | mongodb on docker | 100%
 **<a href="#클라이언트">클라이언트</a>** | ReactJS | 0%
 **<a href="#서버">서버</a>** | NextJS | 0%
 **<a href="#상태관리">상태관리</a>** | Recoil | 0%
-**<a href="#CSS">CSS</a>** | Tailwind CSS | 0%
+**<a href="#CSS">CSS</a>** | SCSS | 0%
 **<a href="#배포">배포</a>** | ? | 0%
 
 
@@ -23,6 +23,7 @@
 ## <div id="DB">Mongo DB를 사용한 이유</div>
 ```
 -> 
+관계형 데이터베이스 의 유연성
 ```
 ## <div id="클라이언트">ReactJS를 사용한 이유</div>
 ```
@@ -40,7 +41,7 @@
 2. 공식문서가 잘되어있어야한다.
 3. 간단해야한다.
 ```
-## <div id="CSS">Tailwind CSS를 사용한 이유</div>
+## <div id="CSS">SCSS를 사용한 이유</div>
 ```
 -> 
 ```
