@@ -23,7 +23,7 @@ export default async function Edit(props:propsEdit) {
 
   return (
     <div>
-      <div className="px-20 py-20">
+      <div className="px-20 py-20 bg-slate-400 flex flex-col">
         <h4>수정 페이지</h4>
         <form action="/api/post/edit" method="POST">
           <input name="title" defaultValue={result.title} />

@@ -26,7 +26,7 @@ export default function ListItem({result}:propsListitem) {
           </Link>
           <Link href={'/edit/' + result[i]._id}>✏️</Link>
           <span className="cursor-pointer" onClick={(e:any)=>{
-                                    fetch('/api/post/delete', { method: 'DELETE', body : result[i]._id })
+                                    fetch(`/api/post/delete?_id=${result[i]._id}`, { method: 'DELETE' })
                                     .then((r)=>{
                                       if(r.status == 200) {
                                         return r.json()
