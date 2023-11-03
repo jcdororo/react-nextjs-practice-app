@@ -2,7 +2,7 @@
 
 기술 | Stacks | 달성률
 --|:--:|--:
-**<a href="#Language">Language</a>** | Typescript | 50%
+**<a href="#Language">Language</a>** | Typescript | 60%
 **<a href="#DB">DB</a>** | Mongodb on Docker | 100%
 **<a href="#클라이언트">클라이언트</a>** | ReactJS | 100%
 **<a href="#서버">서버</a>** | NextJS | 100%

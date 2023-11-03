@@ -1,11 +1,20 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]";
 import { connectDB } from "util/database";
-import { NextRequest, NextResponse } from "next/server";
+import { NextApiRequest, NextApiResponse } from "next";
 
 
-export default async function handler(요청:NextRequest, 응답:NextResponse){
-  let session = await getServerSession(요청, 응답, authOptions);
+interface session {
+  user : {
+    name: string,
+    email: string,
+    role: string
+  },
+  expires: string
+}
+
+export default async function handler(요청:NextApiRequest, 응답:NextApiResponse){
+  let session:session | null = await getServerSession(요청, 응답, authOptions);
 
   // console.log(JSON.parse(요청.body).parent);
   if(!session){

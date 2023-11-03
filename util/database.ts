@@ -6,7 +6,7 @@ const url = 'mongodb://localhost:27017'; // MongoDB 컨테이너의 주소 및 �
 
 
 
-let connectDB: any
+let connectDB: MongoClient | Promise<MongoClient>
 
 if (process.env.NODE_ENV === 'development') {
   if (!global._mongo) {
@@ -16,4 +16,5 @@ if (process.env.NODE_ENV === 'development') {
 } else {
   connectDB = new MongoClient(url).connect()
 }
+console.log('connectDB@@@@@@',connectDB)
 export { connectDB }

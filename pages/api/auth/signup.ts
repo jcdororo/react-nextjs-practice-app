@@ -1,6 +1,5 @@
 import bcrypt from 'bcrypt'
 import { NextApiRequest, NextApiResponse } from 'next';
-import { RequestHandler } from 'next/dist/server/next';
 import { connectDB } from 'util/database';
 
 

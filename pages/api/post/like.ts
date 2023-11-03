@@ -1,12 +1,6 @@
-import { ObjectId } from "mongodb";
 import { NextApiResponse } from "next";
 import { connectDB } from "util/database";
 
-interface mapItem {
-  _id: ObjectId,
-  user_id: string,
-  post_id: string  
-}
 
 interface 요청 {
   method: string
