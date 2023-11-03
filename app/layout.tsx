@@ -5,6 +5,7 @@ import { getServerSession } from 'next-auth'
 import { authOptions } from '../pages/api/auth/[...nextauth]'
 import LogoutBtn from '../app/components/LogoutBtn'
 import LoginBtn from '../app/components/LoginBtn'
+import RegisterBtn from './components/RegisterBtn'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -21,14 +22,20 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang="ko">
       <body className={inter.className}>
         <div className="bg-white p-21"> 
-          <Link href="/" className="mr-10px decoration-none text-black font-bold p-5">Appleforum</Link> 
-          <Link href="/list" className="mr-10px decoration-none text-black p-5">List</Link> 
+          <Link href="/" className="decoration-none text-black font-bold p-5">Appleforum</Link> 
+          <Link href="/list" className="decoration-none text-black p-5">List</Link> 
           {
             session 
             ? 
-            <span>{session.user.name} <LogoutBtn /></span> 
+            <span>
+              <Link href="/write" className="decoration-none text-black p-5">글쓰기</Link> 
+              [<span className='font-bold'>{session.user.name}</span>]님 안녕하세요<LogoutBtn />
+            </span> 
             : 
-            <LoginBtn />
+            <span>
+              <LoginBtn />
+              <RegisterBtn />
+            </span>
           }
           
         </div>  

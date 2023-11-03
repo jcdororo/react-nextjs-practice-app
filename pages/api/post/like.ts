@@ -39,7 +39,6 @@ export default async function handler(요청:요청, 응답:NextApiResponse){
     }
 
     let userList = await db.collection('like').find({ post_id : temp.post_id}).toArray();
-    // userList = userList.filter((x:mapItem) => x.post_id == temp.post_id);
     return await 응답.status(200).json(userList);
   }
 
