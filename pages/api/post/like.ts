@@ -1,7 +1,5 @@
 import { ObjectId } from "mongodb";
-import { NextApiRequest, NextApiResponse } from "next";
-import { FetchEventResult } from "next/dist/server/web/types";
-import { NextRequest, NextResponse } from "next/server";
+import { NextApiResponse } from "next";
 import { connectDB } from "util/database";
 
 interface mapItem {
@@ -17,7 +15,6 @@ interface 요청 {
 
 
 export default async function handler(요청:요청, 응답:NextApiResponse){
-  console.log('응답@@@',typeof 응답)
 
   
   if(요청.method == 'POST') {

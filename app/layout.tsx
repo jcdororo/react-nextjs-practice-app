@@ -20,9 +20,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="ko">
       <body className={inter.className}>
-        <div className="navbar"> 
-          <Link href="/" className="logo">Appleforum</Link> 
-          <Link href="/list">List</Link> 
+        <div className="bg-white p-21"> 
+          <Link href="/" className="mr-10px decoration-none text-black font-bold p-5">Appleforum</Link> 
+          <Link href="/list" className="mr-10px decoration-none text-black p-5">List</Link> 
           {
             session 
             ? 

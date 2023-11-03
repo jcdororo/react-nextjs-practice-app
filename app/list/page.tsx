@@ -13,7 +13,7 @@ export default async function List() {
 
 
   return (
-    <div className="list-bg">
+    <div className="bg-white p-10">
       <ListItem result={result}/>
     </div>
   )
