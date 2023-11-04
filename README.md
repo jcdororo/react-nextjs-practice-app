@@ -6,7 +6,7 @@
 **<a href="#DB">DB</a>** | Mongodb on Docker | 100%
 **<a href="#클라이언트">클라이언트</a>** | ReactJS | 100%
 **<a href="#서버">서버</a>** | NextJS | 100%
-**<a href="#상태관리">상태관리</a>** | Recoil | 0%
+**<a href="#상태관리">상태관리</a>** | Recoil | 30%
 **<a href="#CSS">CSS</a>** | Tailwind CSS | 30%
 **<a href="#배포">배포</a>** | Vercel | 0%
 

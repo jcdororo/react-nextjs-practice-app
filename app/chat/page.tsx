@@ -1,7 +1,7 @@
 import ChatContainer from "app/components/ChatContainer";
 
 
-export default async function Chat() {
+export default function Chat() {
   
 
 

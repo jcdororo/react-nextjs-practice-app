@@ -6,6 +6,7 @@ import { authOptions } from '../pages/api/auth/[...nextauth]'
 import LogoutBtn from '../app/components/LogoutBtn'
 import LoginBtn from '../app/components/LoginBtn'
 import RegisterBtn from './components/RegisterBtn'
+import RecoilRootProvider from './components/RecoilRootProvider'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -39,7 +40,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           }
           
         </div>  
-        {children}
+        <RecoilRootProvider>{children}</RecoilRootProvider>
       </body>
     </html>
   )
