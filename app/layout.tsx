@@ -30,6 +30,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             ? 
             <span>
               <Link href="/write" className="decoration-none text-black p-5">글쓰기</Link> 
+              <Link href="/chat" className="decoration-none text-black p-5">채팅</Link> 
               [<span className='font-bold'>{session.user.name}</span>]님 안녕하세요<LogoutBtn />
             </span> 
             : 
