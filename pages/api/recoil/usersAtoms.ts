@@ -24,3 +24,21 @@ export const userList = selector({
 });
 
 
+export const sessionState:any = atom({
+  key: 'sessionState',
+  default: {
+    user: {
+    name: '',
+    email: '',
+    role: ''
+  }}
+})
+
+export const getUserSession:any = selector({
+  key: 'getUserSession',
+  get: ({get}) => {
+    const temp = get(sessionState);
+
+    return temp;
+  },
+});

@@ -3,7 +3,7 @@ import { authOptions } from "../auth/[...nextauth]";
 import { connectDB } from "util/database";
 import { NextApiRequest, NextApiResponse } from "next";
 
-interface session {
+interface Session {
   user : {
     name: string,
     email: string,
@@ -13,7 +13,7 @@ interface session {
 }
 
 export default async function handler(요청:NextApiRequest, 응답:NextApiResponse){
-  let session:session | null = await getServerSession(요청, 응답, authOptions);
+  let session:Session | null = await getServerSession(요청, 응답, authOptions);
 
   if(session){
     요청.body.author = session.user.email

@@ -3,12 +3,12 @@ import { ObjectId } from "mongodb";
 import { connectDB } from "util/database";
 
 
-interface propsEdit {
+interface Edit {
   params: { id: string },
   searchParams: {} 
 }
 
-export default async function Edit(props:propsEdit) {
+export default async function Edit(props:Edit) {
 
   
   const db = (await connectDB).db("forum");

@@ -3,7 +3,7 @@
 import { ObjectId } from "mongodb"
 import Link from "next/link"
 
-interface propsListitem {
+interface Listitem {
   result: [
     {
       _id: ObjectId,
@@ -13,7 +13,7 @@ interface propsListitem {
   ]
 }
 
-export default function ListItem({result}:propsListitem) {
+export default function ListItem({result}:Listitem) {
 
   return(
     <div>

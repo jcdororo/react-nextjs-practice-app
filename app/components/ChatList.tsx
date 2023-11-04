@@ -1,10 +1,10 @@
 'use client'
 
 import { ObjectId } from 'mongodb'
-import { userList } from 'pages/api/recoil/usersAtoms'
+import { getUserSession, userList } from 'pages/api/recoil/usersAtoms'
 import { useRecoilValue } from 'recoil'
 
-interface propsUsers {
+interface Users {
   _id: ObjectId,
   name: string,
   email: string,
@@ -14,6 +14,8 @@ interface propsUsers {
 
 const ChatList = () => {
   const users = useRecoilValue(userList);
+  const session:any = useRecoilValue(getUserSession);
+
   
 
   
@@ -24,10 +26,14 @@ const ChatList = () => {
     <div className="flex-grow-1 bg-yellow-200">
       <span>대화상대</span>
       {
-        users.map((x:propsUsers,i:number) => (
+        users.map((x:Users,i:number) => (
+          x.name !== session.user.name
+          ? 
           <div key={i} className='border border-solid rounded-md  border-pink-400 py-2 text-center my-1 cursor-pointer'>
             {x.name}
           </div>
+          :
+          <div key={i} className='hidden'></div>
         ))
        
       }

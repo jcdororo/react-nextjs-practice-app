@@ -3,19 +3,36 @@
 import ChatInput from "app/components/ChatInput";
 import ChatList from "app/components/ChatList";
 import Conversation from "app/components/Conversation";
-import {useRecoilState} from 'recoil'
-import { usersState } from 'pages/api/recoil/usersAtoms';
+import {useRecoilState, useRecoilValue} from 'recoil'
+import { sessionState, usersState } from 'pages/api/recoil/usersAtoms';
 import { useEffect } from "react";
 
+interface Session {
+  user: {
+    name: string,
+    email: string,
+    role: string  
+  }  
+}
+
+interface ChatContainerProps {
+  session: Session | null;
+}
+
+const ChatContainer = ({session}:ChatContainerProps) => {
+  const [users, setUsers] = useRecoilState(usersState); 
+
+  const [userSession,setUserSession] = useRecoilState(sessionState);
 
 
-const ChatContainer = () => {
-  const [users, setUsers] = useRecoilState(usersState);
+
 
   useEffect(() => {
     fetch('/api/get/users', {method:'GET'})
     .then(r => r.json())
     .then(result => setUsers(result));
+
+    setUserSession(session);
   
   }, [])
   

@@ -4,12 +4,12 @@ import { ObjectId } from "mongodb"
 import { useEffect, useState } from "react"
 
 
-interface propsLike {
-  _id: ObjectId,
+interface Like {
+  _id: ObjectId | undefined,
   post_id: string
 }
 
-export default function Like({_id, post_id}:propsLike) {
+export default function Like({_id, post_id}:Like) {
 
   const [like, setLike] = useState(0)
 

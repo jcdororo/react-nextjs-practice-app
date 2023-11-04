@@ -9,12 +9,12 @@ import { notFound } from "next/navigation";
 
 
 
-interface propsDetail {
+interface Detail {
   params: { id: string },
   searchParams: {} 
 }
 
-export default async function Detail(props:propsDetail) {
+export default async function Detail(props:Detail) {
   // const client = await connectDB;
   const db = (await connectDB).db("forum");
   let result = await db.collection('post')

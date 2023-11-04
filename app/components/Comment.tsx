@@ -3,11 +3,11 @@
 import { ObjectId } from "mongodb"
 import { useEffect, useState } from "react"
 
-interface propsId {
+interface Id {
   id: string
 }
 
-interface commentList {
+interface CommentList {
   x: {
     _id: ObjectId,
     content: string,
@@ -17,7 +17,7 @@ interface commentList {
   i: number
 }
 
-export default function Comment({id}:propsId) {
+export default function Comment({id}:Id) {
   const [comment, setComment] = useState('')
   const [commentList, setCommentList] = useState([])
   
@@ -43,7 +43,7 @@ export default function Comment({id}:propsId) {
       <hr></hr>
       {
         commentList.length > 0 ?
-        commentList.map((x:commentList["x"], i:commentList["i"]) => (
+        commentList.map((x:CommentList["x"], i:CommentList["i"]) => (
           <div key={i}>{x.author} : {x.content}</div>
         ))
         : '댓글 없음'
