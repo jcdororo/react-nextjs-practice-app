@@ -48,7 +48,7 @@ const ChatContainer = ({session}:ChatContainerProps) => {
       {/* 대화상대 및 유저 리스트       */}
         <ChatList />
         {/* 채팅내용, 대화내용, 텍스트작성란 */}
-        <div className="flex-grow-2">
+        <div className="flex-grow-2 relative w-full absolute">
           <span>채팅내용</span>
           <Conversation />
           <ChatInput />

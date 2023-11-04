@@ -23,8 +23,8 @@ const ChatList = () => {
   
 
   return (
-    <div className="flex-grow-1 bg-yellow-200">
-      <span>대화상대</span>
+    <div className="flex-grow-1 bg-yellow-200 w-44 text-center">
+      <span className="bg-green-400">대화상대</span>
       {
         users.map((x:Users,i:number) => (
           x.name !== session.user.name
@@ -37,7 +37,6 @@ const ChatList = () => {
         ))
        
       }
-      <div className="bg-green-400">유저리스트</div>
     </div>
   )
 }
