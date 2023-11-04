@@ -54,7 +54,7 @@ export default async function Detail(props:propsDetail) {
       <h4>상세페이지</h4>
       <h4>{result.title}</h4>
       <p>{result.content}</p>
-      <Like _id={user._id} post_id={props.params.id} />
+      <Like _id={user?._id} post_id={props.params.id} />
       <Comment id={props.params.id} />
     </div>
   )
