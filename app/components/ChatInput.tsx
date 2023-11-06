@@ -17,7 +17,7 @@ const ChatInput = () => {
     event?.preventDefault();
     if(input !== ''){
       setInput('');
-      await fetch(`/api/post/sendChat?sender_id=${chattings.sender_id}&receiver_id=${chattings.receiver_id}`)
+      await fetch(`/api/post/sendChat?sender_id=${chattings.sender_id}&receiver_id=${chattings.receiver_id}`, { method: 'POST', body : input })
     }
   }
 

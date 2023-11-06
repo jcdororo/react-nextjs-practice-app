@@ -1,10 +1,20 @@
 'use client'
 
-import { chatting } from 'pages/api/recoil/usersAtoms';
+import { getMessages } from 'pages/api/recoil/usersAtoms';
+import { useState } from 'react';
 import { useRecoilValue } from 'recoil'
 
 const Conversation = () => {
-  const chattings = useRecoilValue(chatting);
+  const [isLoading, setIsLoading] = useState(true)
+  const messages = useRecoilValue(getMessages);
+
+  
+  // console.log('messages',messages)
+  
+
+
+   
+
 
 
   return (
@@ -17,6 +27,15 @@ const Conversation = () => {
         <div>이름</div>
         내 대화
       </div>
+
+      {
+        messages.map((x, i) => {
+          <div key={i} className='text-left'>
+            <div>이름 : {x.sender_id}</div>
+            {x.text}
+          </div>  
+        })
+      }
     </div>
   )
 }

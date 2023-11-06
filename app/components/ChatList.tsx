@@ -1,7 +1,7 @@
 'use client'
 
 import { ObjectId } from 'mongodb'
-import { getUserSession, selectChat, sessionState, userList } from 'pages/api/recoil/usersAtoms'
+import { chatting, getUserSession, messages, selectChat, sessionState, userList } from 'pages/api/recoil/usersAtoms'
 import { useRecoilState, useRecoilValue } from 'recoil'
 
 interface Users {
@@ -15,17 +15,24 @@ interface Users {
 const ChatList = () => {
   const [userSession,setUserSession]:any = useRecoilState(sessionState);
   const [select,setSelect] = useRecoilState(selectChat);
-
+  const [chattingMessages, setChattingMessages] = useRecoilState(messages);
+  
+  const chattings = useRecoilValue(chatting);
   const users = useRecoilValue(userList);
   const session:any = useRecoilValue(getUserSession);
   const myName = userSession.user.name;
 
   
-  function handleClick(e:React.MouseEvent<HTMLInputElement>, x:Users):void {
+  async function handleClick(e:React.MouseEvent<HTMLInputElement>, x:Users):Promise<void> {
     setSelect({
       name: x.name,
       receiver_id: x.email
     });
+
+    
+    const result = await fetch(`/api/post/getChat?sender_id=${chattings.sender_id}&receiver_id=${chattings.receiver_id}`)
+                       .then(r => r.json())
+                       .then(r => setChattingMessages(r))
   }
   
   

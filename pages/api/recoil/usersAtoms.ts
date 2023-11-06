@@ -1,5 +1,6 @@
 import {
   RecoilRoot,
+  RecoilState,
   atom,
   selector,
   useRecoilState,
@@ -24,7 +25,7 @@ export const userList = selector({
 });
 
 
-export const sessionState:any = atom({
+export const sessionState: RecoilState<{ user: { name: string; email: string; role: string } }> = atom({
   key: 'sessionState',
   default: {
     user: {
@@ -64,3 +65,16 @@ export const chatting = selector({
   }
 })
 
+export const messages = atom({
+  key: 'messages',
+  default: {}
+})
+
+export const getMessages = selector({
+  key: 'getMessages',
+  get: ({get}) => {
+    const temp = get(messages)
+
+    return temp;
+  }
+})
