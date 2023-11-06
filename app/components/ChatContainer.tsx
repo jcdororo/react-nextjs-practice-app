@@ -4,8 +4,8 @@ import ChatInput from "app/components/ChatInput";
 import ChatList from "app/components/ChatList";
 import Conversation from "app/components/Conversation";
 import {useRecoilState, useRecoilValue} from 'recoil'
-import { sessionState, usersState } from 'pages/api/recoil/usersAtoms';
-import { useEffect } from "react";
+import { selectChat, sessionState, usersState } from 'pages/api/recoil/usersAtoms';
+import { useEffect, useState } from "react";
 
 interface Session {
   user: {
@@ -21,10 +21,14 @@ interface ChatContainerProps {
 
 const ChatContainer = ({session}:ChatContainerProps) => {
   const [users, setUsers] = useRecoilState(usersState); 
-
   const [userSession,setUserSession] = useRecoilState(sessionState);
+  const [select,setSelect] = useRecoilState(selectChat);
+
+  const [name, setName] = useState('')
 
 
+
+  
 
 
   useEffect(() => {
@@ -33,11 +37,13 @@ const ChatContainer = ({session}:ChatContainerProps) => {
     .then(result => setUsers(result));
 
     setUserSession(session);
+    setSelect({
+      name: '',
+      receiver_id: ''
+    });
+
   
   }, [])
-  
-  
-  
  
 
   
@@ -48,11 +54,22 @@ const ChatContainer = ({session}:ChatContainerProps) => {
       {/* 대화상대 및 유저 리스트       */}
         <ChatList />
         {/* 채팅내용, 대화내용, 텍스트작성란 */}
-        <div className="flex-grow-2 relative w-full absolute">
-          <span>채팅내용</span>
-          <Conversation />
-          <ChatInput />
-        </div>
+        {
+          select.name == ''
+          ?
+          <div className="flex justify-center items-center">
+            채팅상대를 선택하세요
+          </div>
+          :
+          <div className="flex-grow-2 relative w-full absolute">
+            <span>
+              <span className="font-bold">
+                {select.name}</span>님과의 채팅</span>
+            <Conversation />
+            <ChatInput />
+          </div>
+        }
+        
     </div>
   )
 }

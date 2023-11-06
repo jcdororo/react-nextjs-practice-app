@@ -1,8 +1,12 @@
 'use client'
 
-import React from 'react'
+import { chatting } from 'pages/api/recoil/usersAtoms';
+import { useRecoilValue } from 'recoil'
 
 const Conversation = () => {
+  const chattings = useRecoilValue(chatting);
+
+
   return (
     <div className='bg-purple-300 absolute m-px w-full h-5/6'>
       <div className='text-left'>

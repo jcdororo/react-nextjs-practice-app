@@ -42,3 +42,25 @@ export const getUserSession:any = selector({
     return temp;
   },
 });
+
+export const selectChat = atom({
+  key: 'selectChat',
+  default : {
+    name: '',
+    receiver_id: ''
+  }
+})
+
+export const chatting = selector({
+  key: 'chatting',
+  get: ({get}) => {
+    const sender_id = get(sessionState);
+    const receiver_id = get(selectChat);
+    const temp = {
+      sender_id: sender_id.user.email,
+      receiver_id: receiver_id.receiver_id
+    }
+    return temp;
+  }
+})
+

@@ -13,6 +13,8 @@ interface Listitem {
   ]
 }
 
+
+
 export default function ListItem({result}:Listitem) {
 
   return(

@@ -4,8 +4,6 @@ import { connectDB } from "util/database";
 
 export default async function handler (요청:NextRequest, 응답:NextApiResponse) {
 
-  // console.log(요청.body)
-
   const db = (await connectDB).db("forum");
   let commentResult = await db.collection('comment')
                        .find({ 

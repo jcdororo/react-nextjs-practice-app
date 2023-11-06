@@ -1,8 +1,8 @@
 'use client'
 
 import { ObjectId } from 'mongodb'
-import { getUserSession, userList } from 'pages/api/recoil/usersAtoms'
-import { useRecoilValue } from 'recoil'
+import { getUserSession, selectChat, sessionState, userList } from 'pages/api/recoil/usersAtoms'
+import { useRecoilState, useRecoilValue } from 'recoil'
 
 interface Users {
   _id: ObjectId,
@@ -13,29 +13,42 @@ interface Users {
 }
 
 const ChatList = () => {
+  const [userSession,setUserSession]:any = useRecoilState(sessionState);
+  const [select,setSelect] = useRecoilState(selectChat);
+
   const users = useRecoilValue(userList);
   const session:any = useRecoilValue(getUserSession);
+  const myName = userSession.user.name;
 
   
-
-  
+  function handleClick(e:React.MouseEvent<HTMLInputElement>, x:Users):void {
+    setSelect({
+      name: x.name,
+      receiver_id: x.email
+    });
+  }
   
   
 
   return (
-    <div className="flex-grow-1 bg-yellow-200 w-44 text-center">
-      <span className="bg-green-400">대화상대</span>
+    <div className="flex-grow-1 bg-yellow-200 w-56 text-center p-1">
+      <span className="bg-green-400">
+        <span className='font-bold'>{myName}</span>님의 대화상대
+      </span>
       {
         users.map((x:Users,i:number) => (
           x.name !== session.user.name
           ? 
-          <div key={i} className='border border-solid rounded-md  border-pink-400 py-2 text-center my-1 cursor-pointer'>
-            {x.name}
-          </div>
+          <input 
+            type='text'
+            readOnly
+            key={i} className='w-11/12 border border-solid rounded-md bg-orange-200 border-pink-400  text-center m-1 cursor-pointer'
+            onClick={(e) => handleClick(e, x)}
+            value={x.name}
+          />
           :
           <div key={i} className='hidden'></div>
         ))
-       
       }
     </div>
   )
