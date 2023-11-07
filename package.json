@@ -19,7 +19,10 @@
     "react": "^18",
     "react-dom": "^18",
     "recoil": "^0.7.7",
-    "typescript": "^5.2.2"
+    "socket.io": "^4.7.2",
+    "socket.io-client": "^4.7.2",
+    "typescript": "^5.2.2",
+    "ws": "^8.14.2"
   },
   "devDependencies": {
     "@types/react": "18.2.33",

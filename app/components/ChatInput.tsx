@@ -1,7 +1,7 @@
 'use client'
 
 import { chatting, msg } from 'pages/api/recoil/usersAtoms';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil';
 
 const ChatInput = () => {
@@ -26,6 +26,10 @@ const ChatInput = () => {
     }
     
   }
+
+
+
+  
 
   return (
     <div className="flex flex-row absolute bottom-0 w-full justify-center">

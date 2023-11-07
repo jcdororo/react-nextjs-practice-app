@@ -1,7 +1,7 @@
 'use client'
 
 import { chatting, getUserSession, msg } from 'pages/api/recoil/usersAtoms';
-import { MutableRefObject, useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil'
 
 interface Item {
@@ -27,7 +27,6 @@ const Conversation = () => {
 
 
 
-
   const scrollToBottom = () => {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
@@ -36,12 +35,15 @@ const Conversation = () => {
 
   
   useEffect(() => {
+    // const b = setInterval(a,1000)
     fetch(`/api/post/getChat?sender_id=${chattings.sender_id}&receiver_id=${chattings.receiver_id}`)
     .then(r => r.json())
     .then(r => setMsgState(r))
     // .then(r => setMsgLoading(false))
     //  .then(r => setChattingMessages(r))
     .then(scrollToBottom);
+
+
   }, [chattings])
 
 
@@ -56,7 +58,10 @@ const Conversation = () => {
     <div className='bg-purple-300 absolute m-px w-full h-5/6 overflow-scroll' ref={chatContainerRef}>
       {
         msgState.map((x:Item, i:number) => (
-          <div key={i} className={(x.sender_id != mySession.user.email ? 'text-left' : 'text-right')}>
+          <div 
+            key={i} 
+            className={(x.sender_id != mySession.user.email ? 'text-left' : 'text-right')}
+          >
             {x.text}            
           </div>
 

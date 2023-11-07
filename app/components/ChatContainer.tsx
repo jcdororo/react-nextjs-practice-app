@@ -42,6 +42,7 @@ const ChatContainer = ({session}:ChatContainerProps) => {
       receiver_id: ''
     });
 
+
   
   }, [])
  
