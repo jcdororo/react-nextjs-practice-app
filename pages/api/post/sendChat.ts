@@ -5,10 +5,6 @@ import { connectDB } from "util/database";
 export default async function handler(request:NextApiRequest, response:NextApiResponse) {
   const db = (await connectDB).db("forum");
 
-  console.log(request.query.sender_id)
-  console.log(request.query.receiver_id)
-
-  console.log(request.body)  
   /*
     _id: 고유아이디
     text : 실제 text,
@@ -19,7 +15,7 @@ export default async function handler(request:NextApiRequest, response:NextApiRe
   const temp = {
     text : request.body,
     sender_id : request.query.sender_id,
-    reciver_id : request.query.receiver_id,
+    receiver_id : request.query.receiver_id,
     timestamp : Date.now().toString()
   }
 

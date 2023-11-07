@@ -1,13 +1,14 @@
 'use client'
 
-import { chatting } from 'pages/api/recoil/usersAtoms';
+import { chatting, msg } from 'pages/api/recoil/usersAtoms';
 import React, { useState } from 'react'
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
 const ChatInput = () => {
   const chattings = useRecoilValue(chatting);
-
   const [input, setInput] = useState('');
+  
+  const [msgState, setMsgState] = useRecoilState(msg);
 
   const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.currentTarget.value)
@@ -18,7 +19,12 @@ const ChatInput = () => {
     if(input !== ''){
       setInput('');
       await fetch(`/api/post/sendChat?sender_id=${chattings.sender_id}&receiver_id=${chattings.receiver_id}`, { method: 'POST', body : input })
+
+      const result = await fetch(`/api/post/getChat?sender_id=${chattings.sender_id}&receiver_id=${chattings.receiver_id}`)
+                       .then(r => r.json())
+                       .then(r => setMsgState(r))
     }
+    
   }
 
   return (

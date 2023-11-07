@@ -65,16 +65,7 @@ export const chatting = selector({
   }
 })
 
-export const messages = atom({
-  key: 'messages',
-  default: {}
-})
-
-export const getMessages = selector({
-  key: 'getMessages',
-  get: ({get}) => {
-    const temp = get(messages)
-
-    return temp;
-  }
+export const msg = atom({
+  key: 'msg',
+  default: []
 })
