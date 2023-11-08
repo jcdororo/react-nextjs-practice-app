@@ -4,7 +4,7 @@ import ChatInput from "app/components/ChatInput";
 import ChatList from "app/components/ChatList";
 import Conversation from "app/components/Conversation";
 import {useRecoilState, useRecoilValue} from 'recoil'
-import { selectChat, sessionState, usersState } from 'pages/api/recoil/usersAtoms';
+import { chatting, selectChat, sessionState, usersState } from 'pages/api/recoil/usersAtoms';
 import { useEffect, useState } from "react";
 
 interface Session {
@@ -19,17 +19,12 @@ interface ChatContainerProps {
   session: Session | null;
 }
 
-const ChatContainer = ({session}:ChatContainerProps) => {
+
+const ChatContainer = ({session}:any) => {
+  const chattings = useRecoilValue(chatting);
   const [users, setUsers] = useRecoilState(usersState); 
   const [userSession,setUserSession] = useRecoilState(sessionState);
   const [select,setSelect] = useRecoilState(selectChat);
-
-  const [name, setName] = useState('')
-
-
-
-  
-
 
   useEffect(() => {
     fetch('/api/get/users', {method:'GET'})
@@ -43,7 +38,6 @@ const ChatContainer = ({session}:ChatContainerProps) => {
     });
 
 
-  
   }, [])
  
 
@@ -66,7 +60,7 @@ const ChatContainer = ({session}:ChatContainerProps) => {
             <span>
               <span className="font-bold">
                 {select.name}</span>님과의 채팅</span>
-            <Conversation />
+            {chattings ? <Conversation /> : ''}
             <ChatInput />
           </div>
         }

@@ -29,9 +29,9 @@ export const sessionState: RecoilState<{ user: { name: string; email: string; ro
   key: 'sessionState',
   default: {
     user: {
-    name: '',
-    email: '',
-    role: ''
+      name: '',
+      email: '',
+      role: ''
   }}
 })
 

@@ -20,11 +20,16 @@ interface Session {
 }
 
 const Conversation = () => {
+  
   const chattings = useRecoilValue(chatting);
   const chatContainerRef: any = useRef(null);
   const [msgState, setMsgState] = useRecoilState(msg);
   const mySession:Session = useRecoilValue(getUserSession);
-
+  
+  const [refresh, setRefresh] = useState(false);
+  // let refresh = false;
+  
+  const idRef:any = useRef(null);
 
 
   const scrollToBottom = () => {
@@ -35,17 +40,29 @@ const Conversation = () => {
 
   
   useEffect(() => {
-    // const b = setInterval(a,1000)
     fetch(`/api/post/getChat?sender_id=${chattings.sender_id}&receiver_id=${chattings.receiver_id}`)
     .then(r => r.json())
     .then(r => setMsgState(r))
-    // .then(r => setMsgLoading(false))
-    //  .then(r => setChattingMessages(r))
     .then(scrollToBottom);
 
 
-  }, [chattings])
+  }, [chattings,refresh])
 
+
+  useEffect(() => {
+    idRef.current = setInterval(() => {
+      setRefresh(!refresh);
+
+    }, 1000);
+
+    return () => {
+      clearInterval(idRef.current);
+      idRef.current = null;
+    }
+  }, [refresh])
+
+ 
+  
 
   useEffect(() => {
     scrollToBottom(); // Scroll to the bottom on every render

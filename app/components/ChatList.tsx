@@ -23,6 +23,10 @@ const ChatList = () => {
   
   async function handleClick(e:React.MouseEvent<HTMLInputElement>, x:Users):Promise<void> {
     setSelect({
+      name: '',
+      receiver_id: ''
+    })
+    setSelect({
       name: x.name,
       receiver_id: x.email
     });

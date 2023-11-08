@@ -12,10 +12,6 @@ interface Session {
 }
 
 export default async function Chat() {
-  
-
-
-
   let session:Session | null = await getServerSession(authOptions);
 
   if(session == null) {
@@ -25,6 +21,11 @@ export default async function Chat() {
       </div>
     )
   }
+  
+  
+
+
+
 
   
 

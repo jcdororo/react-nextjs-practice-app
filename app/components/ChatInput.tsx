@@ -3,12 +3,19 @@
 import { chatting, msg } from 'pages/api/recoil/usersAtoms';
 import React, { useEffect, useState } from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil';
+import { io } from 'socket.io-client';
+
+
+
+
 
 const ChatInput = () => {
   const chattings = useRecoilValue(chatting);
   const [input, setInput] = useState('');
   
   const [msgState, setMsgState] = useRecoilState(msg);
+
+  
 
   const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.currentTarget.value)
@@ -28,7 +35,6 @@ const ChatInput = () => {
   }
 
 
-
   
 
   return (
@@ -38,7 +44,6 @@ const ChatInput = () => {
         onSubmit={handleSubmit}
       >
         <input 
-          className='w-96 h-full' 
           type="text" 
           placeholder="텍스트작성란"
           value={input}
